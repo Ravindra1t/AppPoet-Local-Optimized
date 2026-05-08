@@ -1,0 +1,62 @@
+
+======================================================================
+                    APPPOET HEURISTIC DIAGNOSTIC REPORT
+======================================================================
+Analysis Type: Air-Gapped Local Inference (Offline)
+Timestamp: 2026-05-08 09:19:02
+Target APK: cb10953f39723427d697d06550fae2a330d7fff8fc42e034821e4a4c55f5a667.apk
+======================================================================
+
+NEURAL NETWORK CLASSIFICATION
+------------------------------
+MLP Architecture: 384 -> 128 -> 1 (Sigmoid)
+Input Dimensions: 384 (averaged semantic embedding)
+
+Prediction Results:
+  * Binary Verdict: MALICIOUS
+  * Confidence Score: 33.40%
+  * Threshold: 0.5 (>=0.5 = MALICIOUS, <0.5 = BENIGN)
+
+Risk Assessment:
+  [MED] MEDIUM RISK - Suspicious
+
+======================================================================
+FULL LLM-GENERATED BEHAVIORAL ANALYSIS
+======================================================================
+
+**Heuristic Diagnostic Report**
+
+**App Behavioral Profile:**
+The analyzed application appears to be a mobile payment and NFC-based service, likely designed to facilitate transactions and manage user configurations. It features a suite of activities, including a main activity, settings, help, and a service for emulation purposes. The presence of NFC-related permissions and APIs suggests that the app is intended to interact with NFC-enabled devices, enabling users to share data and make payments. Furthermore, the inclusion of a MQTT service and a profile installer receiver indicates that the app may also be capable of real-time data synchronization and profile management.
+
+**Security Posture:**
+The overall security risk level of this application is **Medium**. The presence of various permissions, such as NFC, internet, and foreground service, raises concerns about potential data exposure and unauthorized access. However, the app's functionality and the presence of legitimate APIs and activities suggest that it is designed to provide a legitimate service. The risk level is mitigated by the fact that the app does not exhibit any overtly malicious behaviors, such as suspicious network communication or data exfiltration.
+
+**Threat Indicators:**
+Several behaviors in the analyzed application suggest potential malicious intent:
+
+* The presence of two custom permissions, `com.rc888.baxi.English.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`, which may be used to conceal the app's true functionality or to bypass security restrictions.
+* The app's interaction with the `http://154.90.60.99/api/user_config` URL, which may be used to retrieve or update user configuration data without explicit user consent.
+* The inclusion of the `androidx.profileinstaller.ProfileInstallReceiver`, which may be used to install or update profiles without user knowledge or consent.
+* The app's use of the `Landroid/os/IBinder;->transact` API, which may be used to communicate with other processes or services in a way that is not transparent to the user.
+
+**Benign Indicators:**
+
+
+======================================================================
+EXTRACTED FEATURE SUMMARY
+======================================================================
+Permission View:
+  ['android.permission.NFC', 'android.permission.NFC_PREFERRED_PAYMENT_INFO', 'android.permission.WAKE_LOCK', 'android.permission.ACCESS_NETWORK_STATE', 'android.permission.INTERNET', 'android.permission.READ_PHONE_STATE', 'android.permission.FOREGROUND_SERVICE', 'android.permission.FOREGROUND_SERVICE_DATA_SYNC', 'android.permission.USE_EXACT_ALARM', 'android.permission.VIBRATE', 'android.permission.SCHEDULE_EXACT_ALARM', 'com.rc888.baxi.English.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'com.rc888.baxi.English.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION']...
+
+API View (Restricted APIs):
+  ['Landroid/content/Context;->getApplicationInfo', 'Landroid/content/pm/PackageManager;->getPackageInfo', 'Landroid/content/IntentFilter;', 'Landroid/os/IBinder;->queryLocalInterface', 'Landroid/content/pm/PackageManager;->queryBroadcastReceivers', 'Landroid/webkit/WebSettings;->setJavaScriptEnabled', 'Landroid/content/pm/PackageManager;->queryIntentServices', 'Landroid/content/SharedPreferences;->edit', 'Landroid/os/IBinder;', 'Landroid/content/Intent;->setAction', 'Landroid/app/PendingIntent;->getService', 'Landroid/content/pm/ResolveInfo;', 'Landroid/os/Environment;->getExternalStorageDirectory', 'Landroid/os/IBinder;->transact', 'Landroid/location/LocationManager;->getLastKnownLocation', 'Landroid/content/pm/PackageManager;->getApplicationInfo', 'Ljava/security/MessageDigest;->digest', 'Landroid/util/Base64;->encode', 'Landroid/content/Context;->getPackageName', 'Ljava/security/cert/Certificate;', 'Landroid/content/pm/ApplicationInfo;->sourceDir', 'Landroid/content/res/Resources;->openRawResource', 'Landroid/app/Service;->onDestroy', 'Landroid/content/Context;->getFilesDir', 'Landroid/app/Service;->startForeground', 'Landroid/content/Intent;->setType', 'Landroid/app/PendingIntent;->getActivity', 'Landroid/app/Activity;->getIntent', 'Landroid/util/Base64;->decode', 'Landroid/os/Parcel;']...
+
+Component View:
+  Activities: 4
+  Services: 2
+  Receivers: 1
+
+======================================================================
+                           END OF REPORT
+======================================================================

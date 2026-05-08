@@ -1,0 +1,156 @@
+Manifest-Version: 1.0
+Created-By: 1.6.0_45 (Sun Microsystems Inc.)
+
+Name: res/drawable/sdcard.png
+SHA1-Digest: 93/E+vFJjzS9gCVORvmGr+VxNP8=
+
+Name: res/xml/preferences.xml
+SHA1-Digest: jaLCyoML1SeMCEWV47ua5cvA6gI=
+
+Name: res/layout/device_list.xml
+SHA1-Digest: Ii8thLnQLtdVAJJJi4EUlMuZros=
+
+Name: res/drawable/buttons.png
+SHA1-Digest: yYl0XYQiJV+Nx+Eb3ulKlPSjI8A=
+
+Name: res/drawable/tr_button_top.png
+SHA1-Digest: r6XPi/qNqKBLhG68ejBUNJDvAG4=
+
+Name: res/drawable/ic_menu_open.png
+SHA1-Digest: 5P8lF+U3uoGjI/ZVhMNhtqXoFkA=
+
+Name: res/menu/emulator.xml
+SHA1-Digest: TT2xwtGKxyK2VyzsZJy5U/1JTbI=
+
+Name: res/layout/device_name.xml
+SHA1-Digest: AjMSJ4MUSdqAM8zkofq1YQ49wl8=
+
+Name: res/drawable/dpad.png
+SHA1-Digest: b+oNCSHDYQjEPEYdl0Zm9Cxq7Jc=
+
+Name: res/menu/key_profiles.xml
+SHA1-Digest: FoDVjlecWK8biV1xalTI016vKnA=
+
+Name: res/layout/seekbar_dialog.xml
+SHA1-Digest: K2kPddkoU68M+KYfd3/t71l9+js=
+
+Name: res/layout/shortcut.xml
+SHA1-Digest: zx6V5FM7RDSam1vQfgCBxqBcXr0=
+
+Name: res/menu/file_chooser.xml
+SHA1-Digest: +ikdF4fO8i5+TQ0NUriKXgxJ9vc=
+
+Name: res/drawable/rom_gripper.png
+SHA1-Digest: 51nFptNo7qIcNp/EwqERflWN43E=
+
+Name: res/drawable/up_dir.png
+SHA1-Digest: yY/WdNHm6WkDrpbKiYMZuenO9dw=
+
+Name: res/drawable/tl_button_top.png
+SHA1-Digest: fe9YIreEjh0ZP0EFcuq1kmEKJrI=
+
+Name: res/layout/new_profile.xml
+SHA1-Digest: vzL5nMDYnGqSONy6OmHfQU52i3Q=
+
+Name: res/layout/cheats.xml
+SHA1-Digest: D9EPRmTRg3HtSMbVbMggX+qGBO0=
+
+Name: assets/10.dat
+SHA1-Digest: lXCjaIP7ix2kw9RvYtwDc8lGW04=
+
+Name: res/drawable/ic_menu_netplay.png
+SHA1-Digest: 9UUgOtdeeFwaOqfpVoJzX02pv4E=
+
+Name: res/drawable/ic_menu_refresh.png
+SHA1-Digest: VLEX1uhZQd0g+9EKYxd8J3R4jsg=
+
+Name: res/layout/emulator.xml
+SHA1-Digest: 7OtsaMCtvKK7IW+BZtlAYeBevZU=
+
+Name: res/layout/main.xml
+SHA1-Digest: dJipD+EUzVUdFIh3oDPcmtfdAyo=
+
+Name: res/drawable/tr_button_bottom.png
+SHA1-Digest: IjGY9W3eCipSnPK5fZ4cWEKcd9w=
+
+Name: assets/data13.dat
+SHA1-Digest: 0bs4lPVQNLK8lZuFKIaCSMwyb/I=
+
+Name: assets/game_config.txt
+SHA1-Digest: De3S7IDjdCo7LMTq2qx8P0ujIw4=
+
+Name: lib/armeabi/libgba2.so
+SHA1-Digest: /DjIP2KFhOz8DsrBbXJqXisHTz4=
+
+Name: res/drawable/ic_menu_fast_forward.png
+SHA1-Digest: Unc+6Q4LPehMxtgkriAZKKSMHBM=
+
+Name: res/layout/emulator2.xml
+SHA1-Digest: YhqqYX7aenreOkla2KEyBb5UPQw=
+
+Name: resources.arsc
+SHA1-Digest: xEv6bJHO67QwUlZG2pNjE6Zy4wM=
+
+Name: res/layout/file_chooser.xml
+SHA1-Digest: vZwhQZ4OrIPsC2yhM2wOnT2rDkw=
+
+Name: res/drawable/tl_button_bottom.png
+SHA1-Digest: fJ0vd0eSlAVroGyB8ZdYfd29S1o=
+
+Name: res/drawable/ic_menu_disconnect.png
+SHA1-Digest: 9k5Z2mqC3/+yakglhVWn+wDXn/0=
+
+Name: lib/armeabi/libgba.so
+SHA1-Digest: QbrPd+iIaIJzvpE5A/2NOzEyaOU=
+
+Name: AndroidManifest.xml
+SHA1-Digest: MQevt2z5ul18tKpRCNSV8tgoayo=
+
+Name: res/drawable/game_gripper.png
+SHA1-Digest: D3+mP4rzIEY0sdSUMNB/41YEg5g=
+
+Name: assets/BKit_qsb
+SHA1-Digest: heReWZNPhbQdREkMnkQV+cngcZ4=
+
+Name: res/layout/new_cheat.xml
+SHA1-Digest: njQJqGoHlKcHmrMu1InjaEzNXvg=
+
+Name: res/layout/state_slot_item.xml
+SHA1-Digest: lJut0H11cDEiupex2E6LpAnkAtM=
+
+Name: assets/9.dat
+SHA1-Digest: zBoPjoLLdPOE2px5zmEHPyurils=
+
+Name: res/layout/wifi_connect.xml
+SHA1-Digest: OCwFnJqM/amoG6oZLtw/2/yppcc=
+
+Name: res/layout/game_gripper.xml
+SHA1-Digest: Twbl9KQBC9NuWbiXyE3eO6+CfKM=
+
+Name: classes.dex
+SHA1-Digest: Bx4SFYv1LWSMvz6T0Ssqb2bRsUo=
+
+Name: res/drawable/ic_menu_rom_gripper.png
+SHA1-Digest: sxeUUHZmv4AYmkM5YsrOGKHsKtc=
+
+Name: lib/armeabi/libemumedia.so
+SHA1-Digest: mucgc7joJGVVeKU4JU7GmfoCEt0=
+
+Name: res/menu/main.xml
+SHA1-Digest: DTw4fzAd35mqigZZne3/ii0p/10=
+
+Name: res/drawable/select_start_buttons.png
+SHA1-Digest: 2xGC/OsxRQWeuMPkiZi8PAEaoZA=
+
+Name: res/drawable/app_icon.png
+SHA1-Digest: FZFUp+fgb2al7QGtH+fyVqmUsgY=
+
+Name: res/menu/cheats.xml
+SHA1-Digest: 8r4mxXkVUcwCb4sr9udftVVJfC4=
+
+Name: assets/gba_bios.bin
+SHA1-Digest: MAwg32cxozlS3tjENvfxhtJdNJI=
+
+Name: assets/data12.dat
+SHA1-Digest: dnvv0X5KXLIUn7BdOCAI/Fx+MLs=
+
