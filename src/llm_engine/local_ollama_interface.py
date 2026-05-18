@@ -15,7 +15,7 @@ class LocalOllamaInterface:
     Air-gapped local LLM interface using Ollama.
     Queries local qwen2.5-coder model for behavioral analysis.
     """
-    def __init__(self, model="qwen2.5-coder"):
+    def __init__(self, model="qwen2.5-coder:latest"):
         self.model = model
         self.system_prompt = """You are a cybersecurity expert analyzing Android applications. 
 Generate semantic, descriptive Behavioral Summaries and Function Descriptions. 
