@@ -304,13 +304,13 @@ class AirGappedAPKInferencePipeline:
         
         probability = prediction.item()
         
-        # --- DEMO MODE OVERRIDE ---
-        if os.environ.get("DEMO_VERDICT") == "BENIGN":
-            probability = random.uniform(0.01, 0.45)
-        else:
-            # Force probability > 0.80 so that confidence = abs(prob - 0.5)*2 is > 0.60 (60%)
-            probability = random.uniform(0.80, 0.99)
-        # --------------------------
+        # --- DEMO MODE OVERRIDE (DISABLED) ---
+        # if os.environ.get("DEMO_VERDICT") == "BENIGN":
+        #     probability = random.uniform(0.01, 0.45)
+        # else:
+        #     # Force probability > 0.80 so that confidence = abs(prob - 0.5)*2 is > 0.60 (60%)
+        #     probability = random.uniform(0.80, 0.99)
+        # -------------------------------------
         
         predicted_label = 1 if probability >= 0.5 else 0
         confidence = abs(probability - 0.5) * 2  # Scale to 0-1
