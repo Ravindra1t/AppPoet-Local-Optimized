@@ -15,10 +15,27 @@ class GroqInterface:
     Groq API client interface for lightning-fast behavioral summaries.
     """
     def __init__(self, api_key=None, model="llama-3.1-8b-instant"):
-        # Load API key from parameter or fall back to environment variable
-        self.api_key = api_key if api_key else os.environ.get("GROQ_API_KEY")
+        self.api_key = api_key
+        
+        # 1. Fallback to reading from local secure .env file in project root
         if not self.api_key:
-            raise ValueError("[ERROR] GROQ_API_KEY environment variable is not set. Please set it before running.")
+            env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), ".env")
+            if os.path.exists(env_path):
+                try:
+                    with open(env_path, "r", encoding="utf-8") as f:
+                        for line in f:
+                            if line.strip().startswith("GROQ_API_KEY="):
+                                self.api_key = line.strip().split("=", 1)[1].strip()
+                                break
+                except Exception:
+                    pass
+                    
+        # 2. Fallback to OS Environment Variables
+        if not self.api_key:
+            self.api_key = os.environ.get("GROQ_API_KEY")
+            
+        if not self.api_key:
+            raise ValueError("[ERROR] GROQ_API_KEY is not set. Please set it in a local .env file or your environment variables.")
             
         self.client = Groq(api_key=self.api_key)
         self.model = model

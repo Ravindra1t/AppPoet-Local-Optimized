@@ -13,3 +13,5 @@ data/temp_decoded/
 reports/report_*.txt
 *.apk
 models/*.pth
+.env
+
