@@ -3,7 +3,7 @@
                     APPPOET HEURISTIC DIAGNOSTIC REPORT
 ======================================================================
 Analysis Type: Air-Gapped Local Inference (Offline)
-Timestamp: 2026-05-18 10:14:59
+Timestamp: 2026-05-18 11:00:49
 Target APK: cb10953f39723427d697d06550fae2a330d7fff8fc42e034821e4a4c55f5a667.apk
 ======================================================================
 
@@ -13,12 +13,12 @@ MLP Architecture: 1152 -> 512 -> 1 (Sigmoid)
 Input Dimensions: 1152 (concatenated 3-view embeddings)
 
 Prediction Results:
-  * Binary Verdict: MALICIOUS
-  * Confidence Score: 69.91%
+  * Binary Verdict: BENIGN
+  * Confidence Score: 70.27%
   * Threshold: 0.5 (>=0.5 = MALICIOUS, <0.5 = BENIGN)
 
 Risk Assessment:
-  [MED] MEDIUM RISK - Suspicious
+  [LOW] LOW RISK - Likely Benign
 
 ======================================================================
 FULL LLM-GENERATED BEHAVIORAL ANALYSIS
@@ -26,30 +26,28 @@ FULL LLM-GENERATED BEHAVIORAL ANALYSIS
 
 **Heuristic Diagnostic Report**
 
-**Classification Result:** MALICIOUS (Confidence: 69.91%)
+**Classification Result:** BENIGN (Confidence: 70.27%)
 
 **Permission View Summary: Behavioral Summary**
 
-The analyzed Android app exhibits a concerning set of permissions that indicate a multifaceted and potentially malicious functionality. The app's ability to access sensitive device resources, including the phone's state, suggests a high level of interaction with the device's telephony capabilities. The presence of the `READ_PHONE_STATE` permission implies that the app can retrieve information about the device's phone number, SIM card status, and other related details.
+The analyzed Android app exhibits a multifaceted behavior that warrants scrutiny due to its extensive access to sensitive device resources and system-level capabilities. Upon examination, it becomes apparent that the app accesses a range of device resources, including the phone's state, network state, and vibration capabilities, as indicated by the presence of android.permission.READ_PHONE_STATE, android.permission.ACCESS_NETWORK_STATE, and android.permission.VIBRATE. This suggests that the app is designed to interact with the device's core functionality, potentially allowing it to monitor and manipulate the user's phone usage.
 
-The app's system-level capabilities, including the ability to schedule exact alarms, raise concerns regarding background tasks and notifications. The `SCHEDULE_EXACT_ALARM` permission, in conjunction with `USE_EXACT_ALARM`, suggests that the app can execute tasks at precise times, potentially impacting the device's battery life and overall performance. Furthermore, the `FOREGROUND_SERVICE` and `FOREGROUND_SERVICE_DATA_SYNC` permissions indicate that the app can maintain a persistent presence in the foreground, possibly for data synchronization or real-time updates.
+Furthermore, the app's access to NFC-related permissions, such as android.permission.NFC_PREFERRED_PAYMENT_INFO and android.permission.NFC, implies that it is capable of interacting with Near Field Communication (NFC) technology, which could be used for payment processing, data transfer, or other purposes. The inclusion of android.permission.INTERNET suggests that the app can establish network connections, potentially allowing it to transmit data to remote servers or services.
 
-The app's permission profile also raises significant concerns regarding user privacy. The `NFC` and `NFC_PREFERRED_PAYMENT_INFO` permissions suggest that the app can interact with Near Field Communication (NFC) technology, potentially allowing it to access payment information or other sensitive data stored on NFC-enabled devices. The `VIBRATE` permission implies that the app can control the device's vibration motor, which may be used to notify users or create a more immersive experience.
+The app's system-level capabilities are equally concerning, as it is granted permissions that enable it to schedule exact alarms, use exact alarms, and access foreground services. Specifically, android.permission.USE_EXACT_ALARM and android.permission.SCHEDULE_EXACT_ALARM indicate that the app can schedule precise alarms, which could be used to wake the device or trigger specific actions at designated times. Additionally, android.permission.FOREGROUND_SERVICE_DATA_SYNC and android.permission.FOREGROUND_SERVICE suggest that the app can maintain a persistent connection to the device's foreground services, potentially allowing it to monitor system events or transmit data in real-time.
 
-**Recommendations:**
+**API View Summary: Behavioral Summary**
 
-1. **Restrict Sensitive Permissions:** The app's ability to access sensitive device resources and system-level capabilities poses a significant risk to user privacy and security. Restricting these permissions is essential to prevent potential malicious activities.
-2. **Implement Data Encryption:** To mitigate the risk of data theft or unauthorized access, the app should implement robust data encryption mechanisms to protect sensitive user information.
-3. **Regular Security
+The analyzed app exhibits a complex and potentially malicious behavior, characterized by extensive system interactions, external communications, and sensitive operations. At runtime, the app engages in various system interactions, including retrieving the device's location using the `
 
 ======================================================================
 EXTRACTED FEATURE SUMMARY
 ======================================================================
 Permission View:
-  ['android.permission.NFC', 'android.permission.FOREGROUND_SERVICE_DATA_SYNC', 'com.rc888.baxi.English.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'android.permission.READ_PHONE_STATE', 'android.permission.SCHEDULE_EXACT_ALARM', 'android.permission.WAKE_LOCK', 'android.permission.ACCESS_NETWORK_STATE', 'android.permission.VIBRATE', 'android.permission.NFC_PREFERRED_PAYMENT_INFO', 'android.permission.INTERNET', 'android.permission.FOREGROUND_SERVICE', 'android.permission.USE_EXACT_ALARM']...
+  ['android.permission.NFC_PREFERRED_PAYMENT_INFO', 'android.permission.INTERNET', 'com.rc888.baxi.English.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'android.permission.USE_EXACT_ALARM', 'android.permission.FOREGROUND_SERVICE_DATA_SYNC', 'android.permission.VIBRATE', 'android.permission.SCHEDULE_EXACT_ALARM', 'android.permission.NFC', 'android.permission.ACCESS_NETWORK_STATE', 'android.permission.READ_PHONE_STATE', 'android.permission.WAKE_LOCK', 'android.permission.FOREGROUND_SERVICE']...
 
 API View (Restricted APIs):
-  ['Landroid/net/ConnectivityManager;->getNetworkInfo', 'Landroid/telephony/TelephonyManager;->getDeviceId', 'Landroid/location/LocationManager;->getLastKnownLocation', 'Ljava/lang/reflect/Method;->invoke', 'Landroid/os/Handler;->postDelayed', 'Ljava/net/Socket;->getOutputStream', 'Ljava/util/concurrent/ExecutorService;->execute', 'Ljava/io/FileInputStream;->read', 'Ljava/net/Socket;->connect', 'Ljavax/net/ssl/SSLContext;->init', 'Landroid/util/Base64;->encode', 'Ljava/io/FileOutputStream;->write', 'Ljava/net/Socket;->getInputStream', 'Landroid/os/Environment;->getExternalStorageDirectory', 'Ljava/util/Timer;->schedule', 'Landroid/util/Base64;->decode', 'Ljava/security/MessageDigest;->digest', 'Ljava/lang/Runtime;->exec', 'Ljava/lang/Thread;->start', 'Ljava/net/URL;->openConnection', 'Ljava/io/File;->delete', 'Landroid/database/Cursor;->getString']...
+  ['Landroid/location/LocationManager;->getLastKnownLocation', 'Landroid/telephony/TelephonyManager;->getDeviceId', 'Landroid/net/ConnectivityManager;->getNetworkInfo', 'Landroid/util/Base64;->decode', 'Landroid/database/Cursor;->getString', 'Ljava/lang/reflect/Method;->invoke', 'Ljava/io/File;->delete', 'Landroid/os/Environment;->getExternalStorageDirectory', 'Ljava/lang/Runtime;->exec', 'Ljava/io/FileInputStream;->read', 'Ljava/net/Socket;->getOutputStream', 'Landroid/os/Handler;->postDelayed', 'Landroid/util/Base64;->encode', 'Ljavax/net/ssl/SSLContext;->init', 'Ljava/net/Socket;->connect', 'Ljava/lang/Thread;->start', 'Ljava/util/concurrent/ExecutorService;->execute', 'Ljava/net/URL;->openConnection', 'Ljava/net/Socket;->getInputStream', 'Ljava/util/Timer;->schedule', 'Ljava/io/FileOutputStream;->write', 'Ljava/security/MessageDigest;->digest']...
 
 Component View:
   Activities: 4
