@@ -26,7 +26,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from extraction.apktool_decoder import APKToolDecoder
 from extraction.androguard_parser import AndroguardParser
-from llm_engine.local_ollama_interface import LocalOllamaInterface
+from llm_engine.qwen_interface import GroqInterface
 from classifier.text_embedder import TextEmbedder
 from classifier.pytorch_mlp import PyTorchMLP
 import torch
@@ -48,9 +48,9 @@ class AirGappedAPKInferencePipeline:
         self.decoder = APKToolDecoder(output_dir=self.temp_dir)
         self.androguard = AndroguardParser()
         
-        # Enforce Local Ollama exclusively (locked to local qwen2.5-coder)
-        self.llm = LocalOllamaInterface(model="qwen2.5-coder:latest")
-        llm_name = "local Ollama (qwen2.5-coder:latest)"
+        # Enforce lightning-fast Groq inference
+        self.llm = GroqInterface(model="llama-3.1-8b-instant")
+        llm_name = "Groq (llama-3.1-8b-instant)"
         
         self.embedder = TextEmbedder()
         self.model_path = model_path
@@ -403,10 +403,10 @@ Component View:
         """
         try:
             print("\n" + "="*70)
-            print("     APPPOET AIR-GAPPED LOCAL INFERENCE PIPELINE")
+            print("     APPPOET HYBRID MALWARE ANALYSIS PIPELINE")
             print("="*70)
-            print("Mode: Offline (No Cloud APIs)")
-            print("LLM: Local Ollama (llama3.1)")
+            print("Mode: Online (Groq API Inference)")
+            print("LLM: Groq (llama-3.1-8b-instant)")
             print("Embeddings: sentence-transformers (BAAI/bge-large-en-v1.5)")
             print(f"Classifier: PyTorch MLP ({self.input_dim}->512->1)")
             print("="*70)
