@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.venv/
+venv/
+ENV/
+env/
+.idea/
+.vscode/
+data/temp_decoded/
+reports/report_*.txt
+*.apk
+models/*.pth

@@ -63,3 +63,19 @@ Synthesize these features into a unified Heuristic Diagnostic Report that includ
 4. Benign Indicators: Behaviors suggesting legitimate functionality.
 
 This report should be detailed, semantic, and suitable for human review. Do not use bullet points or comma-separated lists for the profile descriptions."""
+
+    FINAL_DIAGNOSTIC_REPORT = """Generate a strict, actionable Heuristic Diagnostic Report based on the following multi-view features and the final Neural Network Classification.
+
+Classification Result: {classification_verdict} (Confidence: {confidence})
+
+Permission View Summary: {permission_summary}
+API View Summary: {api_summary}
+URL/Component View Summary: {url_summary}
+
+Synthesize these features into a unified Heuristic Diagnostic Report detailing specific risk vectors.
+Instructions:
+1. Reference explicit APIs, permissions, and domains extracted from the views.
+2. Ground all assertions in the extracted feature arrays. Do NOT allow speculative implications.
+3. Propose actionable static/dynamic analysis next steps.
+4. Structure the report with clear headings: App Behavioral Profile, Threat Indicators, Benign Indicators, Actionable Next Steps.
+"""

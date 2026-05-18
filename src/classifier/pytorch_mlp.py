@@ -4,21 +4,30 @@ import torch.optim as optim
 import os
 
 class PyTorchMLP(nn.Module):
-    def __init__(self, input_dim=384, hidden_dim=128, output_dim=1, model_path=None):
+    def __init__(self, input_dim, hidden_dim=512, output_dim=1, model_path=None):
         """
-        MLP for App Analysis
-        Input: 384 dimensions (single semantic embedding)
-        Architecture: 384 → 128 → 1 (matches saved weights)
+        MLP for App Analysis matching the exact saved architecture in state_dict.
+        Architecture: Input (input_dim) -> Linear (512) -> ReLU -> Dropout -> Linear (256) -> ReLU -> Dropout -> Linear (128) -> ReLU -> Linear (1) -> Sigmoid
         """
         super(PyTorchMLP, self).__init__()
         
-        # Architecture matches saved weights exactly
-        self.layer1 = nn.Linear(input_dim, hidden_dim)
-        self.relu1 = nn.ReLU()
-        self.dropout1 = nn.Dropout(0.3)
-        
-        self.layer2 = nn.Linear(hidden_dim, output_dim)
-        self.sigmoid = nn.Sigmoid()
+        # Exact architecture and module keys matching:
+        # 'network.0.weight' [512, 1152], 'network.0.bias' [512]
+        # 'network.3.weight' [256, 512], 'network.3.bias' [256]
+        # 'network.6.weight' [128, 256], 'network.6.bias' [128]
+        # 'network.8.weight' [1, 128], 'network.8.bias' [1]
+        self.network = nn.Sequential(
+            nn.Linear(input_dim, hidden_dim), # 0
+            nn.ReLU(),                        # 1
+            nn.Dropout(0.3),                  # 2
+            nn.Linear(hidden_dim, 256),       # 3
+            nn.ReLU(),                        # 4
+            nn.Dropout(0.3),                  # 5
+            nn.Linear(256, 128),              # 6
+            nn.ReLU(),                        # 7
+            nn.Linear(128, output_dim),       # 8
+            nn.Sigmoid()                      # 9
+        )
         
         self.criterion = nn.BCELoss()
         self.optimizer = optim.Adam(self.parameters(), lr=0.001)
@@ -27,14 +36,13 @@ class PyTorchMLP(nn.Module):
         if model_path and os.path.exists(model_path):
             self.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))
             print(f"Warm-start: Loaded model weights from {model_path}")
-    
+            
+    @property
+    def layer1(self):
+        return self.network[0]
+            
     def forward(self, x):
-        x = self.layer1(x)
-        x = self.relu1(x)
-        x = self.dropout1(x)
-        x = self.layer2(x)
-        x = self.sigmoid(x)
-        return x
+        return self.network(x)
     
     def train_step(self, inputs, targets):
         self.optimizer.zero_grad()
@@ -57,3 +65,4 @@ class PyTorchMLP(nn.Module):
     
     def load_model(self, path):
         self.load_state_dict(torch.load(path, map_location=torch.device('cpu')))
+

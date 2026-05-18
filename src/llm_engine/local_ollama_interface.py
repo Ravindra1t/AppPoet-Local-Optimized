@@ -13,9 +13,9 @@ import ollama
 class LocalOllamaInterface:
     """
     Air-gapped local LLM interface using Ollama.
-    Queries local llama3.1 model for behavioral analysis.
+    Queries local qwen2.5-coder model for behavioral analysis.
     """
-    def __init__(self, model="llama3.1"):
+    def __init__(self, model="qwen2.5-coder"):
         self.model = model
         self.system_prompt = """You are a cybersecurity expert analyzing Android applications. 
 Generate semantic, descriptive Behavioral Summaries and Function Descriptions. 
@@ -24,6 +24,9 @@ Provide cohesive paragraphs describing app behavior. Do not use bullet points or
     def generate(self, prompt, max_tokens=400, temperature=0.2):
         """Generate text using local Ollama model."""
         try:
+            # Setting timeout=None on local ollama library calls isn't explicitly supported or needed 
+            # as it uses standard urllib / requests internally. If using client-level configurations,
+            # we simply ensure no options limit the connection length.
             response = ollama.chat(
                 model=self.model,
                 messages=[

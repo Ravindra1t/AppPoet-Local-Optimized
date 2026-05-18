@@ -3,22 +3,22 @@
                     APPPOET HEURISTIC DIAGNOSTIC REPORT
 ======================================================================
 Analysis Type: Air-Gapped Local Inference (Offline)
-Timestamp: 2026-05-08 09:22:04
+Timestamp: 2026-05-18 08:38:36
 Target APK: cb10953f39723427d697d06550fae2a330d7fff8fc42e034821e4a4c55f5a667.apk
 ======================================================================
 
 NEURAL NETWORK CLASSIFICATION
 ------------------------------
-MLP Architecture: 384 -> 128 -> 1 (Sigmoid)
-Input Dimensions: 384 (averaged semantic embedding)
+MLP Architecture: 1152 -> 512 -> 1 (Sigmoid)
+Input Dimensions: 1152 (concatenated 3-view embeddings)
 
 Prediction Results:
   * Binary Verdict: MALICIOUS
-  * Confidence Score: 67.11%
+  * Confidence Score: 74.27%
   * Threshold: 0.5 (>=0.5 = MALICIOUS, <0.5 = BENIGN)
 
 Risk Assessment:
-  [MED] MEDIUM RISK - Suspicious
+  [HIGH] HIGH RISK - Likely Malicious
 
 ======================================================================
 FULL LLM-GENERATED BEHAVIORAL ANALYSIS
@@ -26,21 +26,19 @@ FULL LLM-GENERATED BEHAVIORAL ANALYSIS
 
 **Heuristic Diagnostic Report**
 
-**App Behavioral Profile:**
+**Classification Result:** MALICIOUS (Confidence: 74.27%)
 
-The analyzed app appears to be a complex, feature-rich application that leverages various Android APIs and permissions to provide a range of functionalities. At its core, the app seems to be designed for mobile payments and NFC-based transactions, as evidenced by the presence of NFC-related permissions and APIs. Additionally, the app's use of internet connectivity, network state, and device information suggests a strong focus on online interactions and data exchange. Furthermore, the inclusion of alarm and vibration permissions, as well as the use of exact alarms, implies that the app may also be capable of scheduling tasks and notifications. The presence of a settings activity, help activity, and dynamic receiver not exported permission further supports the notion that the app is a comprehensive, user-facing application.
+**Permission View Summary: Behavioral Summary**
 
-**Security Posture:**
+The analyzed Android app exhibits a complex and multifaceted behavior, driven by a diverse set of permissions that collectively suggest a wide range of functionalities and potential risks. The app accesses several sensitive device resources, including NFC capabilities, which enable it to interact with near-field communication tags and potentially facilitate mobile payments. The app also has access to the phone's state, including the device's network status, which could be used to monitor and respond to changes in the device's connectivity. Furthermore, the app can read the phone's state, which may include information about the device's location, battery level, and other system settings.
 
-Based on the analyzed features, the overall security risk level of this app is classified as **High**. The presence of sensitive permissions such as NFC, NFC_PREFERRED_PAYMENT_INFO, and READ_PHONE_STATE, combined with the app's use of internet connectivity and network state, raises concerns about potential data exfiltration and unauthorized access. Furthermore, the inclusion of alarm and vibration permissions, as well as the use of exact alarms, may enable the app to perform malicious activities, such as phishing or spamming, without the user's knowledge or consent. Additionally, the app's use of a dynamic receiver not exported permission may indicate an attempt to hide or obfuscate its functionality, which is a common tactic employed by malicious developers.
+The app's system-level capabilities grant it significant control over the device's behavior. It has the ability to wake the device from a sleep state, which could be used to run background tasks or initiate system-level events. The app can also schedule exact alarms, which may be used to trigger specific actions or notifications at precise times. Additionally, it has the capability to vibrate the device, which could be used to draw the user's attention or provide haptic feedback.
 
-**Threat Indicators:**
+The overall privacy risk profile of the app is elevated due to the combination of permissions that grant it access to sensitive device resources and system-level capabilities. The presence of NFC-related permissions, combined with the ability to read the phone's state and schedule exact alarms, suggests that the app may be capable of tracking the user's location and behavior. The app's ability to access the device's network status and schedule exact alarms also raises concerns about its potential to collect and transmit sensitive information.
 
-Several behaviors in the analyzed app suggest malicious intent:
+**Function Description**
 
-* The app's use of NFC-related permissions and APIs may enable it to perform unauthorized transactions or data exfiltration.
-* The presence of sensitive permissions such as READ_PHONE_STATE and NFC_PREFERRED_PAYMENT_INFO raises concerns about potential data exfiltration and unauthorized access.
-* The inclusion of alarm and vibration permissions, as well as the use of exact alarms, may
+The permissions granted to this app suggest that it is designed to provide a range of functionalities, including mobile payment processing, location-based services, and system-level automation. The app's ability to access NFC capabilities, read the phone's state, and schedule exact alarms suggests that it may
 
 ======================================================================
 EXTRACTED FEATURE SUMMARY
@@ -49,7 +47,7 @@ Permission View:
   ['android.permission.NFC', 'android.permission.NFC_PREFERRED_PAYMENT_INFO', 'android.permission.WAKE_LOCK', 'android.permission.ACCESS_NETWORK_STATE', 'android.permission.INTERNET', 'android.permission.READ_PHONE_STATE', 'android.permission.FOREGROUND_SERVICE', 'android.permission.FOREGROUND_SERVICE_DATA_SYNC', 'android.permission.USE_EXACT_ALARM', 'android.permission.VIBRATE', 'android.permission.SCHEDULE_EXACT_ALARM', 'com.rc888.baxi.English.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'com.rc888.baxi.English.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION']...
 
 API View (Restricted APIs):
-  ['Ljava/io/File;->delete', 'Landroid/content/SharedPreferences;->edit', 'Landroid/content/Intent;->putExtra', 'Landroid/content/pm/ResolveInfo;', 'Landroid/telephony/TelephonyManager;->getDeviceId', 'Landroid/os/Parcelable$Creator;', 'Landroid/content/ContentValues;->put', 'Landroid/content/Intent;->getAction', 'Landroid/content/SharedPreferences$Editor;->apply', 'Landroid/content/Intent;->setClassName', 'Landroid/location/Location;->getLongitude', 'Landroid/content/pm/PackageInfo;->signatures', 'Landroid/content/SharedPreferences$Editor;->commit', 'Landroid/content/pm/ApplicationInfo;->sourceDir', 'Landroid/app/Application;->onCreate', 'Landroid/app/Activity;->finish', 'Ljava/net/Socket;->connect', 'Landroid/os/Parcel;', 'Ljava/util/Timer;->schedule', 'Landroid/content/pm/PackageManager;->queryIntentActivities', 'Landroid/app/Activity;->getIntent', 'Landroid/view/WindowManager;->addView', 'Landroid/os/Environment;->getExternalStorageDirectory', 'Landroid/content/IntentFilter;', 'Landroid/content/Context;->getFilesDir', 'Landroid/location/Location;->getLatitude', 'Landroid/content/res/AssetManager;->open', 'Landroid/content/pm/PackageManager;->getPackageInfo', 'Landroid/content/pm/PackageManager;->resolveActivity', 'Ljava/io/FileOutputStream;->write']...
+  ['Landroid/location/LocationManager;->getLastKnownLocation', 'Landroid/net/ConnectivityManager;->getNetworkInfo', 'Landroid/telephony/TelephonyManager;->getDeviceId', 'Landroid/os/PowerManager$WakeLock;->acquire', 'Landroid/os/Environment;->getExternalStorageDirectory', 'Ljava/lang/reflect/Method;->invoke', 'Ljava/util/concurrent/ExecutorService;->execute', 'Landroid/os/Handler;->postDelayed', 'Ljava/io/FileInputStream;->read', 'Ljava/io/File;->delete', 'Landroid/app/admin/DevicePolicyManager;', 'Landroid/database/Cursor;->getString', 'Ljava/net/Socket;->getOutputStream', 'Ljava/security/cert/Certificate;', 'Ljava/net/Socket;->connect', 'Ljava/io/FileOutputStream;->write', 'Landroid/util/Base64;->encode', 'Ljava/util/Timer;->schedule', 'Landroid/util/Base64;->decode', 'Ljava/security/MessageDigest;->digest', 'Ljava/lang/Thread;->start', 'android.intent.action.PROCESS_TEXT', 'android.location.LocationRequest']...
 
 Component View:
   Activities: 4
