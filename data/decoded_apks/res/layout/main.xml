@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:layout_gravity="center" android:id="@id/start" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="开始游戏" />
-    <Button android:layout_gravity="center" android:id="@id/about3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="安装优化游戏速度插件" />
-    <Button android:layout_gravity="center" android:id="@id/about" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="退出游戏" />
-    <TextView android:textSize="22.0sp" android:id="@id/tid" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="游戏说明：如果觉得游戏运行不流畅，请安装优化游戏速度插件，可以大幅提升游戏速度。" />
-</LinearLayout>
