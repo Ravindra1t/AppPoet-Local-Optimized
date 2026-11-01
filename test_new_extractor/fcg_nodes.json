@@ -1,0 +1,121 @@
+{
+  "Lcom/bitbar/testdroid/BitbarSampleApplicationActivity$1;-><init>": [
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0
+  ],
+  "Lcom/bitbar/testdroid/BitbarSampleApplicationActivity$1;->onClick": [
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0
+  ],
+  "Lcom/bitbar/testdroid/BitbarSampleApplicationActivity$2;-><init>": [
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0
+  ],
+  "Lcom/bitbar/testdroid/BitbarSampleApplicationActivity;->findViewById": [
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0
+  ],
+  "Lcom/bitbar/testdroid/BitbarSampleApplicationActivity;->getApplicationContext": [
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0
+  ],
+  "Lcom/bitbar/testdroid/BitbarSampleApplicationActivity;->getSystemService": [
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0
+  ],
+  "Lcom/bitbar/testdroid/BitbarSampleApplicationActivity;->onCreate": [
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0
+  ],
+  "Lcom/bitbar/testdroid/BitbarSampleApplicationActivity;->setContentView": [
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0
+  ],
+  "Lcom/bitbar/testdroid/BitbarSampleApplicationActivity;->startActivity": [
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0
+  ],
+  "Lcom/bitbar/testdroid/CorrectAnswerActivity;->findViewById": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "Lcom/bitbar/testdroid/CorrectAnswerActivity;->getIntent": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "Lcom/bitbar/testdroid/CorrectAnswerActivity;->getSystemService": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "Lcom/bitbar/testdroid/CorrectAnswerActivity;->onCreate": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "Lcom/bitbar/testdroid/CorrectAnswerActivity;->setContentView": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "Lcom/bitbar/testdroid/WrongAnswerActivity;->getSystemService": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "Lcom/bitbar/testdroid/WrongAnswerActivity;->onCreate": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "Lcom/bitbar/testdroid/WrongAnswerActivity;->setContentView": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ]
+}

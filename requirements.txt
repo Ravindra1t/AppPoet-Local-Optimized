@@ -1,0 +1,7 @@
+# Core extraction dependencies
+androguard>=3.4.0a1
+networkx>=2.8.0
+
+# Optional PyTorch multimodal model dependencies
+# torch>=2.0.0
+# torch-geometric>=2.3.0

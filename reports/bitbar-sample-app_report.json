@@ -1,0 +1,21 @@
+{
+  "apk_name": "bitbar-sample-app.apk",
+  "target_input": "bitbar-sample-app.apk",
+  "package_name": "com.bitbar.testdroid",
+  "prediction": "Malicious",
+  "malware_probability": 0.5765,
+  "confidence_score": 0.153,
+  "logit": 0.3085,
+  "trailing_dot_heuristic": false,
+  "analysis_time_seconds": 0.12,
+  "feature_stats": {
+    "num_permissions": 2,
+    "num_services": 0,
+    "num_receivers": 0,
+    "total_sensitive_api_inbound_calls": 0,
+    "unique_sensitive_apis_invoked": 0,
+    "fcg_nodes": 50,
+    "fcg_edges": 51
+  },
+  "top_flagged_sensitive_apis": []
+}

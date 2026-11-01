@@ -1,0 +1,53 @@
+{
+  "apk_name": "ApiDemos-debug.apk",
+  "package_name": "io.appium.android.apis",
+  "prediction": "Benign",
+  "malware_probability": 0.2129,
+  "confidence_score": 0.5743,
+  "logit": -1.3078,
+  "trailing_dot_heuristic": false,
+  "analysis_time_seconds": 2.41,
+  "feature_stats": {
+    "num_permissions": 12,
+    "num_services": 11,
+    "num_receivers": 7,
+    "total_sensitive_api_inbound_calls": 393,
+    "unique_sensitive_apis_invoked": 58,
+    "fcg_nodes": 19906,
+    "fcg_edges": 36349
+  },
+  "top_flagged_sensitive_apis": [
+    {
+      "api": "Ljava/lang/reflect/Method;->invoke",
+      "invocation_count": 58
+    },
+    {
+      "api": "Ljava/lang/Class;->getDeclaredMethod",
+      "invocation_count": 29
+    },
+    {
+      "api": "Ljava/lang/Class;->getMethod",
+      "invocation_count": 25
+    },
+    {
+      "api": "Ljava/lang/Class;->getDeclaredField",
+      "invocation_count": 23
+    },
+    {
+      "api": "Ljava/io/File;->delete",
+      "invocation_count": 22
+    },
+    {
+      "api": "Ljava/lang/reflect/Field;->setAccessible",
+      "invocation_count": 19
+    },
+    {
+      "api": "Landroid/content/ContentResolver;->query",
+      "invocation_count": 19
+    },
+    {
+      "api": "Ljava/lang/reflect/Field;->get",
+      "invocation_count": 17
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "apk_name": "05e70b283808aca9c32cd393c0979f53a3ad2a980b81a467e3cac0e9288c3334.apk",
+  "package_name": "rip.hra.coils.installer",
+  "prediction": "Malicious",
+  "malware_probability": 0.7299,
+  "confidence_score": 0.4599,
+  "logit": 0.9943,
+  "trailing_dot_heuristic": true,
+  "analysis_time_seconds": 1.18,
+  "feature_stats": {
+    "num_permissions": 0,
+    "num_services": 1,
+    "num_receivers": 3,
+    "total_sensitive_api_inbound_calls": 35,
+    "unique_sensitive_apis_invoked": 20,
+    "fcg_nodes": 105,
+    "fcg_edges": 127
+  },
+  "top_flagged_sensitive_apis": [
+    {
+      "api": "Ljava/lang/Class;->getDeclaredMethod",
+      "invocation_count": 4
+    },
+    {
+      "api": "Ljava/lang/reflect/Method;->invoke",
+      "invocation_count": 4
+    },
+    {
+      "api": "Ljava/lang/reflect/Field;->get",
+      "invocation_count": 4
+    },
+    {
+      "api": "Ljava/lang/reflect/Field;->set",
+      "invocation_count": 4
+    },
+    {
+      "api": "Ljava/lang/ClassLoader;->loadClass",
+      "invocation_count": 2
+    },
+    {
+      "api": "Ljava/lang/Class;->forName",
+      "invocation_count": 2
+    },
+    {
+      "api": "Ljava/lang/Class;->newInstance",
+      "invocation_count": 2
+    },
+    {
+      "api": "Ldalvik/system/DexClassLoader;-><init>",
+      "invocation_count": 1
+    }
+  ]
+}
