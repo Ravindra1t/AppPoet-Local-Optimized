@@ -18,7 +18,11 @@ sys.path.insert(0, str(Path(__file__).parent.resolve()))
 
 from apppoet.pipeline.detector import AppPoetDetector, analyze_apk
 from apppoet.pipeline.reporting import print_terminal_summary
-from apppoet.core.heuristics import has_trailing_dot, apply_trailing_dot_bump
+try:
+    from apppoet.core.heuristics import has_trailing_dot, apply_trailing_dot_bump
+except ImportError:
+    def has_trailing_dot(path): return False
+    def apply_trailing_dot_bump(prob, logit, path): return prob, logit
 from apppoet.models.fusion_classifier import TORCH_AVAILABLE
 
 # Try importing PyG if available

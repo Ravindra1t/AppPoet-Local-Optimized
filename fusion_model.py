@@ -7,7 +7,11 @@ import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.resolve()))
 
-from apppoet.core.heuristics import has_trailing_dot, apply_trailing_dot_bump
+try:
+    from apppoet.core.heuristics import has_trailing_dot, apply_trailing_dot_bump
+except ImportError:
+    def has_trailing_dot(path): return False
+    def apply_trailing_dot_bump(prob, logit, path): return prob, logit
 from apppoet.models.feature_synthesis import build_semantic_feature_1024, build_structural_feature_256
 from apppoet.models.fusion_classifier import (
     StandaloneFusionClassifier,

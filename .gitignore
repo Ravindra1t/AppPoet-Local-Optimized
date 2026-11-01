@@ -25,5 +25,17 @@ dist/
 .DS_Store
 Thumbs.db
 
-# Output directory temp files (retain folder structure if needed)
-# output/
+# Output directory and test files
+output/
+*_output/
+test_new_extractor/
+reports/
+
+# Images and Logos (kept local only)
+*.png
+*.jpg
+*.jpeg
+
+# Local-only Evasion & Dot-trick files
+test_trailing_dot.py
+apppoet/core/heuristics.py

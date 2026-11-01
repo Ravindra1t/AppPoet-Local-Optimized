@@ -36,8 +36,6 @@ def print_terminal_summary(report: Dict[str, Any]) -> None:
     print(f"Target APK:                 {BOLD}{report['apk_name']}{RESET}")
     print(f"Package Name:               {report['package_name']}")
     print(f"Analysis Duration:          {report['analysis_time_seconds']}s")
-    if report.get("trailing_dot_heuristic"):
-        print(f"Heuristic Flag:             {YELLOW}Trailing dot evasion detected (Probability adjusted){RESET}")
     print("------------------------------------------------------------------------")
     print(f"Final Binary Verdict:       {verdict_badge}")
     print(f"Malware Probability Score:  {prob_str}")
@@ -106,7 +104,6 @@ def save_reports(
         f"- **Malware Probability:** **{report['malware_probability'] * 100:.2f}%** (`{report['malware_probability']}`)",
         f"- **Model Confidence:** **{report['confidence_score'] * 100:.2f}%** (`{report['confidence_score']}`)",
         f"- **Logit Score:** `{report['logit']}`",
-        f"- **Trailing Dot Evasion Flag:** `{report.get('trailing_dot_heuristic', False)}`",
         f"",
         f"> **Key Difference Note:**",
         f"> - **Malware Probability** estimates the likelihood that the app contains malicious behaviors.",

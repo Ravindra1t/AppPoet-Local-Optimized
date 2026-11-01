@@ -10,7 +10,6 @@ import sys
 from pathlib import Path
 from typing import List
 
-from apppoet.core.heuristics import has_trailing_dot
 from apppoet.pipeline.detector import AppPoetDetector
 from apppoet.pipeline.reporting import print_terminal_summary, save_reports, BOLD, CYAN, GREEN, RED, RESET
 

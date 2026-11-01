@@ -38,7 +38,14 @@ except ImportError:
         Analysis = None
 
 from apppoet.core.sensitive_apis import TOP_200_SENSITIVE_APIS
-from apppoet.core.heuristics import has_trailing_dot, resolve_physical_apk_path
+try:
+    from apppoet.core.heuristics import has_trailing_dot, resolve_physical_apk_path
+except ImportError:
+    def has_trailing_dot(path): return False
+    def resolve_physical_apk_path(target_path):
+        from pathlib import Path
+        p = Path(str(target_path).strip())
+        return p, str(target_path), False
 from apppoet.utils.logger import setup_logger, silence_third_party_loggers
 
 logger = setup_logger("APKExtractor")

@@ -11,7 +11,11 @@ from typing import Dict, Optional, Union
 sys.path.insert(0, str(Path(__file__).parent.resolve()))
 
 from apppoet.pipeline.detector import AppPoetDetector, load_fcg_edges
-from apppoet.core.heuristics import has_trailing_dot, apply_trailing_dot_bump
+try:
+    from apppoet.core.heuristics import has_trailing_dot, apply_trailing_dot_bump
+except ImportError:
+    def has_trailing_dot(path): return False
+    def apply_trailing_dot_bump(prob, logit, path): return prob, logit
 
 
 def run_inference_pipeline(

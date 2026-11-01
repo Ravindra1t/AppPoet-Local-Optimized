@@ -14,7 +14,15 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from apppoet.core.extractor import APKExtractor
-from apppoet.core.heuristics import has_trailing_dot, resolve_physical_apk_path, apply_trailing_dot_bump
+try:
+    from apppoet.core.heuristics import has_trailing_dot, resolve_physical_apk_path, apply_trailing_dot_bump
+except ImportError:
+    def has_trailing_dot(path): return False
+    def apply_trailing_dot_bump(prob, logit, path): return prob, logit
+    def resolve_physical_apk_path(target_path):
+        from pathlib import Path
+        p = Path(str(target_path).strip())
+        return p, str(target_path), False
 from apppoet.models.fusion_classifier import load_model, TORCH_AVAILABLE
 from apppoet.models.feature_synthesis import build_semantic_feature_1024, build_structural_feature_256
 from apppoet.utils.logger import setup_logger, silence_third_party_loggers
