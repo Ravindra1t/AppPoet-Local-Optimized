@@ -1,20 +1,44 @@
 {
   "apk_name": "05e70b283808aca9c32cd393c0979f53a3ad2a980b81a467e3cac0e9288c3334.apk",
-  "package_name": "rip.hra.coils.installer",
-  "prediction": "Malicious",
-  "malware_probability": 0.7299,
-  "confidence_score": 0.4599,
-  "logit": 0.9943,
-  "trailing_dot_heuristic": true,
-  "analysis_time_seconds": 1.18,
+  "target_input": "05e70b283808aca9c32cd393c0979f53a3ad2a980b81a467e3cac0e9288c3334.apk",
+  "package_name": "rip.hra.coils",
+  "prediction": "Benign",
+  "malware_probability": 0.1817,
+  "confidence_score": 0.6367,
+  "logit": -1.5052,
+  "trailing_dot_heuristic": false,
+  "analysis_time_seconds": 0.2,
   "feature_stats": {
-    "num_permissions": 0,
+    "num_permissions": 306,
+    "num_dangerous_permissions": 1,
     "num_services": 1,
     "num_receivers": 3,
+    "num_activities": 2,
+    "num_providers": 2,
+    "num_intent_actions": 8,
+    "num_high_risk_intents": 3,
+    "has_dynamic_code_loading": true,
+    "dynamic_code_loading": {
+      "has_dex_class_loader": true,
+      "has_in_memory_dex_class_loader": true,
+      "has_path_class_loader": false,
+      "has_delegate_last_class_loader": false,
+      "has_reflection": false
+    },
+    "num_payload_files": 3,
+    "payload_files": [
+      "DebugProbesKt.bin",
+      "assets/gk3z249fk62z.bin",
+      "assets/gy6xuh1f.dat"
+    ],
+    "num_native_libraries": 0,
+    "native_abis": [],
+    "is_signed": true,
+    "manifest_tampered": true,
     "total_sensitive_api_inbound_calls": 35,
     "unique_sensitive_apis_invoked": 20,
-    "fcg_nodes": 105,
-    "fcg_edges": 127
+    "fcg_nodes": 103,
+    "fcg_edges": 126
   },
   "top_flagged_sensitive_apis": [
     {

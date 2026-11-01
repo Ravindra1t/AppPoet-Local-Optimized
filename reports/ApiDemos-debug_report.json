@@ -1,20 +1,42 @@
 {
   "apk_name": "ApiDemos-debug.apk",
+  "target_input": "ApiDemos-debug.apk",
   "package_name": "io.appium.android.apis",
   "prediction": "Benign",
-  "malware_probability": 0.2129,
-  "confidence_score": 0.5743,
-  "logit": -1.3078,
+  "malware_probability": 0.2183,
+  "confidence_score": 0.5634,
+  "logit": -1.2756,
   "trailing_dot_heuristic": false,
-  "analysis_time_seconds": 2.41,
+  "analysis_time_seconds": 2.75,
   "feature_stats": {
-    "num_permissions": 12,
+    "num_permissions": 18,
+    "num_dangerous_permissions": 11,
     "num_services": 11,
     "num_receivers": 7,
+    "num_activities": 332,
+    "num_providers": 3,
+    "num_intent_actions": 8,
+    "num_high_risk_intents": 2,
+    "has_dynamic_code_loading": false,
+    "dynamic_code_loading": {
+      "has_dex_class_loader": false,
+      "has_in_memory_dex_class_loader": false,
+      "has_path_class_loader": false,
+      "has_delegate_last_class_loader": false,
+      "has_reflection": false
+    },
+    "num_payload_files": 1,
+    "payload_files": [
+      "assets/HelloActivity.apk"
+    ],
+    "num_native_libraries": 0,
+    "native_abis": [],
+    "is_signed": true,
+    "manifest_tampered": false,
     "total_sensitive_api_inbound_calls": 393,
     "unique_sensitive_apis_invoked": 58,
-    "fcg_nodes": 19906,
-    "fcg_edges": 36349
+    "fcg_nodes": 18444,
+    "fcg_edges": 34957
   },
   "top_flagged_sensitive_apis": [
     {

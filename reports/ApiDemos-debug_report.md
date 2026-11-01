@@ -2,14 +2,15 @@
 
 **Target Application:** `ApiDemos-debug.apk`  
 **Package Name:** `io.appium.android.apis`  
-**Analysis Time:** `2.41 seconds`  
+**Analysis Time:** `2.75 seconds`  
 
 ## Verdict & Classification Summary
 
 - **Verdict:** **`BENIGN`**
-- **Malware Probability:** **21.29%** (`0.2129`)
-- **Model Confidence:** **57.43%** (`0.5743`)
-- **Logit Score:** `-1.3078`
+- **Malware Probability:** **21.83%** (`0.2183`)
+- **Model Confidence:** **56.34%** (`0.5634`)
+- **Logit Score:** `-1.2756`
+- **Trailing Dot Evasion Flag:** `False`
 
 > **Key Difference Note:**
 > - **Malware Probability** estimates the likelihood that the app contains malicious behaviors.
@@ -19,13 +20,20 @@
 
 | Feature Category | Count / Value |
 | :--- | :--- |
-| **Declared Permissions** | 12 |
+| **Recovered Permissions** | 18 (Dangerous: 11) |
+| **Activities** | 332 |
 | **Background Services** | 11 |
 | **Broadcast Receivers** | 7 |
+| **Content Providers** | 3 |
+| **Intent Actions** | 8 (High-Risk: 2) |
+| **Manifest Integrity** | Clean |
+| **Dynamic Code Loading** | None |
+| **Dropper Hidden Assets** | 1 files |
+| **Native Libraries (.so)** | 0 |
 | **Active Sensitive APIs** | 58 |
 | **Total Sensitive Inbound Calls** | 393 |
-| **FCG Execution Graph Nodes** | 19906 |
-| **FCG Call Graph Edges** | 36349 |
+| **FCG Execution Graph Nodes** | 18444 |
+| **FCG Call Graph Edges** | 34957 |
 
 ## Top Flagged Sensitive APIs
 

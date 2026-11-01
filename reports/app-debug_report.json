@@ -1,0 +1,73 @@
+{
+  "apk_name": "app-debug.apk",
+  "target_input": "app-debug.apk",
+  "package_name": "com.browserstack.addnumber",
+  "prediction": "Benign",
+  "malware_probability": 0.152,
+  "confidence_score": 0.696,
+  "logit": -1.7191,
+  "trailing_dot_heuristic": false,
+  "analysis_time_seconds": 1.64,
+  "feature_stats": {
+    "num_permissions": 2,
+    "num_dangerous_permissions": 2,
+    "num_services": 0,
+    "num_receivers": 0,
+    "num_activities": 1,
+    "num_providers": 0,
+    "num_intent_actions": 1,
+    "num_high_risk_intents": 0,
+    "has_dynamic_code_loading": false,
+    "dynamic_code_loading": {
+      "has_dex_class_loader": false,
+      "has_in_memory_dex_class_loader": false,
+      "has_path_class_loader": false,
+      "has_delegate_last_class_loader": false,
+      "has_reflection": false
+    },
+    "num_payload_files": 0,
+    "payload_files": [],
+    "num_native_libraries": 0,
+    "native_abis": [],
+    "is_signed": true,
+    "manifest_tampered": false,
+    "total_sensitive_api_inbound_calls": 213,
+    "unique_sensitive_apis_invoked": 40,
+    "fcg_nodes": 13248,
+    "fcg_edges": 21004
+  },
+  "top_flagged_sensitive_apis": [
+    {
+      "api": "Ljava/lang/reflect/Method;->invoke",
+      "invocation_count": 37
+    },
+    {
+      "api": "Ljava/lang/Class;->getDeclaredMethod",
+      "invocation_count": 19
+    },
+    {
+      "api": "Ljava/lang/Class;->getDeclaredField",
+      "invocation_count": 17
+    },
+    {
+      "api": "Ljava/lang/Class;->getMethod",
+      "invocation_count": 15
+    },
+    {
+      "api": "Ljava/lang/reflect/Field;->setAccessible",
+      "invocation_count": 14
+    },
+    {
+      "api": "Ljava/lang/reflect/Method;->setAccessible",
+      "invocation_count": 13
+    },
+    {
+      "api": "Ljava/lang/reflect/Field;->get",
+      "invocation_count": 12
+    },
+    {
+      "api": "Ljava/io/File;->delete",
+      "invocation_count": 9
+    }
+  ]
+}

@@ -20,9 +20,16 @@
 
 | Feature Category | Count / Value |
 | :--- | :--- |
-| **Declared Permissions** | 2 |
+| **Recovered Permissions** | 2 (Dangerous: 1) |
+| **Activities** | 3 |
 | **Background Services** | 0 |
 | **Broadcast Receivers** | 0 |
+| **Content Providers** | 0 |
+| **Intent Actions** | 1 (High-Risk: 0) |
+| **Manifest Integrity** | Clean |
+| **Dynamic Code Loading** | None |
+| **Dropper Hidden Assets** | 0 files |
+| **Native Libraries (.so)** | 0 |
 | **Active Sensitive APIs** | 0 |
 | **Total Sensitive Inbound Calls** | 0 |
 | **FCG Execution Graph Nodes** | 50 |

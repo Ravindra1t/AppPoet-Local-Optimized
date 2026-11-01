@@ -179,6 +179,69 @@ class TestAPKExtractor(unittest.TestCase):
             nodes = json.load(f)
         self.assertEqual(len(nodes), 3)
 
+    def test_sota_static_feature_extraction_live(self):
+        """Verifies SOTA static extraction on benign bitbar-sample-app.apk."""
+        sample_path = Path("bitbar-sample-app.apk")
+        if not sample_path.exists():
+            self.skipTest("bitbar-sample-app.apk not found in workspace")
+
+        extractor = APKExtractor(apk_path=sample_path, output_dir=self.output_dir)
+        res = extractor.extract_all(export_format="integer")
+
+        self.assertEqual(res["status"], "success")
+        self.assertEqual(res["package_name"], "com.bitbar.testdroid")
+
+        with open(res["features_path"], "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        # Verify SDK and metadata
+        self.assertFalse(data["metadata"]["manifest_tampered"])
+        self.assertIn(str(data["metadata"]["min_sdk_version"]), ["4", "4.0"])
+
+        # Verify Signing and Debug cert
+        self.assertTrue(data["signing_info"]["is_signed"])
+        self.assertTrue(data["signing_info"]["is_signed_v1"])
+        self.assertGreaterEqual(len(data["signing_info"]["certificates"]), 1)
+        self.assertTrue(data["signing_info"]["certificates"][0]["is_debug"])
+
+        # Verify Components and details
+        self.assertGreaterEqual(len(data["activities"]), 1)
+        self.assertGreaterEqual(len(data["component_details"]), 1)
+
+    def test_sota_obfuscated_static_feature_extraction_live(self):
+        """Verifies SOTA anti-obfuscation and dropper recovery on real malware sample."""
+        malware_path = Path("05e70b283808aca9c32cd393c0979f53a3ad2a980b81a467e3cac0e9288c3334.apk")
+        if not malware_path.exists():
+            self.skipTest("Malware sample not found in workspace")
+
+        extractor = APKExtractor(apk_path=malware_path, output_dir=self.output_dir)
+        res = extractor.extract_all(export_format="integer")
+
+        self.assertEqual(res["status"], "success")
+        # Recovered package name despite corrupted manifest root
+        self.assertEqual(res["package_name"], "rip.hra.coils")
+
+        with open(res["features_path"], "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        # Recovered permissions from AXML string pool (standard Androguard gets 0)
+        self.assertGreater(len(data["app_perm"]), 100)
+
+        # Accurately flagged manifest tampering
+        self.assertTrue(data["metadata"]["manifest_tampered"])
+
+        # Dynamic code loading detection
+        self.assertTrue(data["dynamic_code_loading"]["has_dex_class_loader"])
+        self.assertTrue(data["dynamic_code_loading"]["has_in_memory_dex_class_loader"])
+
+        # Hidden encrypted payloads in assets/
+        self.assertGreaterEqual(len(data["payload_files"]), 2)
+
+        # Self-signed certificate
+        self.assertTrue(data["signing_info"]["is_signed"])
+        self.assertGreaterEqual(len(data["signing_info"]["certificates"]), 1)
+        self.assertTrue(data["signing_info"]["certificates"][0]["is_self_signed"])
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -44,9 +44,21 @@ def print_terminal_summary(report: Dict[str, Any]) -> None:
     print(f"Model Confidence:           {conf_str}")
     print("------------------------------------------------------------------------")
     print(f"{BOLD}Multimodal Behavioral Profile:{RESET}")
-    print(f"  * Declared Permissions:   {stats['num_permissions']}")
-    print(f"  * Background Services:    {stats['num_services']}")
-    print(f"  * Broadcast Receivers:    {stats['num_receivers']}")
+    print(f"  * Recovered Permissions:  {stats['num_permissions']} (Dangerous: {stats.get('num_dangerous_permissions', 0)})")
+    comps_str = f"{stats.get('num_activities', 0)} Activities, {stats['num_services']} Services, {stats['num_receivers']} Receivers, {stats.get('num_providers', 0)} Providers"
+    print(f"  * App Components:         {comps_str}")
+    print(f"  * Intent Action Triggers: {stats.get('num_intent_actions', 0)} (High-Risk: {stats.get('num_high_risk_intents', 0)})")
+    if stats.get("manifest_tampered"):
+        print(f"  * Manifest Integrity:     {RED}Tampered / Obfuscated AXML Detected{RESET}")
+    else:
+        print(f"  * Manifest Integrity:     Clean")
+    if stats.get("has_dynamic_code_loading"):
+        print(f"  * Dynamic Code Loading:   {RED}Detected (DexClassLoader / InMemoryDexClassLoader){RESET}")
+    if stats.get("num_payload_files", 0) > 0:
+        print(f"  * Dropper Hidden Assets:  {YELLOW}{stats['num_payload_files']} payload files ({', '.join(stats.get('payload_files', [])[:3])}){RESET}")
+    if stats.get("num_native_libraries", 0) > 0:
+        abis = f" [{', '.join(stats.get('native_abis', []))}]" if stats.get("native_abis") else ""
+        print(f"  * Native Binaries (.so):  {stats['num_native_libraries']}{abis}")
     print(f"  * Sensitive APIs Active:  {stats['unique_sensitive_apis_invoked']} (Total Inbound Calls: {stats['total_sensitive_api_inbound_calls']})")
     print(f"  * Call Graph Topology:    {stats['fcg_nodes']} nodes, {stats['fcg_edges']} edges")
 
@@ -104,9 +116,16 @@ def save_reports(
         f"",
         f"| Feature Category | Count / Value |",
         f"| :--- | :--- |",
-        f"| **Declared Permissions** | {stats['num_permissions']} |",
+        f"| **Recovered Permissions** | {stats['num_permissions']} (Dangerous: {stats.get('num_dangerous_permissions', 0)}) |",
+        f"| **Activities** | {stats.get('num_activities', 0)} |",
         f"| **Background Services** | {stats['num_services']} |",
         f"| **Broadcast Receivers** | {stats['num_receivers']} |",
+        f"| **Content Providers** | {stats.get('num_providers', 0)} |",
+        f"| **Intent Actions** | {stats.get('num_intent_actions', 0)} (High-Risk: {stats.get('num_high_risk_intents', 0)}) |",
+        f"| **Manifest Integrity** | {'Tampered / Obfuscated AXML' if stats.get('manifest_tampered') else 'Clean'} |",
+        f"| **Dynamic Code Loading** | {'Detected (DexClassLoader/InMemory)' if stats.get('has_dynamic_code_loading') else 'None'} |",
+        f"| **Dropper Hidden Assets** | {stats.get('num_payload_files', 0)} files |",
+        f"| **Native Libraries (.so)** | {stats.get('num_native_libraries', 0)} |",
         f"| **Active Sensitive APIs** | {stats['unique_sensitive_apis_invoked']} |",
         f"| **Total Sensitive Inbound Calls** | {stats['total_sensitive_api_inbound_calls']} |",
         f"| **FCG Execution Graph Nodes** | {stats['fcg_nodes']} |",
