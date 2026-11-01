@@ -43,9 +43,15 @@ class AppPoetDetector:
     """
     Production-ready multimodal Android malware detector.
     """
-    def __init__(self, weights_path: str = "fusion_classifier.pth", verbose: bool = False):
+    def __init__(
+        self,
+        weights_path: str = "fusion_classifier.pth",
+        sage_weights_path: str = "sage_encoder.pth",
+        verbose: bool = False
+    ):
         silence_third_party_loggers()
         self.weights_path = weights_path
+        self.sage_weights_path = sage_weights_path
         self.verbose = verbose
         self.model = load_model(weights_path)
 
@@ -159,8 +165,9 @@ class AppPoetDetector:
 def analyze_apk(
     apk_path: Union[str, Path],
     weights_path: str = "fusion_classifier.pth",
+    sage_weights_path: str = "sage_encoder.pth",
     verbose: bool = False
 ) -> Dict[str, Any]:
     """Convenience helper to analyze an APK using AppPoetDetector."""
-    detector = AppPoetDetector(weights_path=weights_path, verbose=verbose)
+    detector = AppPoetDetector(weights_path=weights_path, sage_weights_path=sage_weights_path, verbose=verbose)
     return detector.scan(apk_path)

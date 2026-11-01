@@ -38,6 +38,12 @@ def main() -> None:
         help="Path to trained model weights (default: fusion_classifier.pth)"
     )
     parser.add_argument(
+        "--sage-weights", "-s",
+        type=str,
+        default="sage_encoder.pth",
+        help="Path to DeepSAGE GNN encoder weights (default: sage_encoder.pth)"
+    )
+    parser.add_argument(
         "--json",
         action="store_true",
         help="Print raw JSON report to stdout instead of executive summary"
@@ -86,7 +92,11 @@ def main() -> None:
         print("\nTip: Run 'python run_pipeline.py ApiDemos-debug.apk' or 'python run_pipeline.py --benchmark'")
         sys.exit(0)
 
-    detector = AppPoetDetector(weights_path=args.weights, verbose=args.verbose)
+    detector = AppPoetDetector(
+        weights_path=args.weights,
+        sage_weights_path=args.sage_weights,
+        verbose=args.verbose
+    )
 
     for target_apk in targets:
         try:

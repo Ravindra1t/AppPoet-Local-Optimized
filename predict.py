@@ -40,10 +40,15 @@ def print_executive_summary(result: Dict) -> None:
 def predict_apk(
     apk_path: str,
     weights_path: str = "fusion_classifier.pth",
+    sage_weights_path: str = "sage_encoder.pth",
     device_name: Optional[str] = None
 ) -> Dict:
     """Runs inference on a target APK using AppPoetDetector."""
-    detector = AppPoetDetector(weights_path=weights_path, verbose=False)
+    detector = AppPoetDetector(
+        weights_path=weights_path,
+        sage_weights_path=sage_weights_path,
+        verbose=False
+    )
     return detector.scan(apk_path)
 
 
@@ -57,6 +62,12 @@ def main() -> None:
         type=str,
         default="fusion_classifier.pth",
         help="Path to DeepCrossAttentionFusion weights (default: fusion_classifier.pth)"
+    )
+    parser.add_argument(
+        "--sage-weights",
+        type=str,
+        default="sage_encoder.pth",
+        help="Path to DeepSAGEEncoder weights (default: sage_encoder.pth)"
     )
     parser.add_argument(
         "--device",
@@ -76,6 +87,7 @@ def main() -> None:
         report = predict_apk(
             apk_path=args.apk,
             weights_path=args.weights,
+            sage_weights_path=args.sage_weights,
             device_name=args.device
         )
         if args.json:

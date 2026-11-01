@@ -2,7 +2,7 @@
 
 **Target Application:** `bitbar-sample-app.apk`  
 **Package Name:** `com.bitbar.testdroid`  
-**Analysis Time:** `0.12 seconds`  
+**Analysis Time:** `0.1 seconds`  
 
 ## Verdict & Classification Summary
 
